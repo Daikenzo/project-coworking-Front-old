@@ -1,5 +1,6 @@
-import logo from './img/logo.svg';
-import './css/App.css';
+import logo from '../img/logo.svg';
+import '../css/App.css';
+import React from "react";
 
 // APP.JS - Brother Router List
 const LogoContent = () =>{

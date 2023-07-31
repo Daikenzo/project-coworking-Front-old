@@ -5,6 +5,7 @@ import './css/App.css';
 //Page Components
 import HomePage from "./page/HomePage";
 import CoworkingPage from "./page/CoworkingsPage";
+import CreateCoworkingPage from "./page/CreateCoworkingPage";
 
 // APP.JS - Brother Router List
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/coworkings" element={<CoworkingPage />} />
+        <Route path="/coworkings/create" element={<CreateCoworkingPage />} />
       </Routes>
     </BrowserRouter>
   );
