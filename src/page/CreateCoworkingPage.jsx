@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import HeaderAdmin from "../components/HeaderAdmin";
+import Footer from "../components/Footer";
+import Cookies from "js-cookie";
 
 const CreateCoworkingPage = () =>{
     const navigate = useNavigate();
@@ -7,7 +10,9 @@ const CreateCoworkingPage = () =>{
     // Create Coworking actionclick
     const handleCreateCoworking = async (event) => {
       event.preventDefault();
-  
+      // Init Token
+      const token = Cookies.get("jwt")
+      
       // on récupère les infos du form
       const name = event.target.name.value;
       const superficy = event.target.superficy.value;
@@ -20,6 +25,7 @@ const CreateCoworkingPage = () =>{
       const address_postcode = event.target.address_postcode.value;
       const address_city = event.target.address_city.value;
   
+
       // Create API DATA
       const coworkingData = {
         name: name,
@@ -39,7 +45,6 @@ const CreateCoworkingPage = () =>{
       };
   
       console.log(coworkingData);
-    
       // Call POST API function with CoworkingData
       const responseCreate = await fetch(
         `http://${LocalHost}/api/coworkings`, {
@@ -47,16 +52,19 @@ const CreateCoworkingPage = () =>{
         body: JSON.stringify(coworkingData),
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
   
       const responseCreateJs = await responseCreate.json();
       console.log(responseCreateJs)
       //Redirect into /coWorking
-      navigate("/coworkings");
+      navigate("/admin/coworkings");
     };
     // Display Form
     return (
+      <>
+      <HeaderAdmin />
       <div className="App-container App-form">
           <form onSubmit={handleCreateCoworking}>
             <div>
@@ -108,6 +116,8 @@ const CreateCoworkingPage = () =>{
             <input type="submit" />
           </form>
       </div>
+      <Footer/>
+      </>
     );
 };
 

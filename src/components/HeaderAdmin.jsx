@@ -6,7 +6,7 @@ import LogoContent from "./LogoContent";
 //Import
 
 
-const   Header = () =>{
+const   HeaderAdmin = () =>{
 
     return (
         <header className="App-header">
@@ -17,6 +17,12 @@ const   Header = () =>{
             <nav className="App-nav">
                 <ul>
                     <li>
+                        <Link to={"/admin/coworkings"}>Liste des coworkings</Link>
+                    </li>
+                    <li>
+                        <Link to={"/admin/coworkings/create"}>Ajouter un coworking</Link>
+                    </li>
+                    <li>
                         <Link to={"/login"}>Connection</Link>
                     </li>
                 </ul>
@@ -26,4 +32,4 @@ const   Header = () =>{
     );
 };
 
-export default Header;
+export default HeaderAdmin;

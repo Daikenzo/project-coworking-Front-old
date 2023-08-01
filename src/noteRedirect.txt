@@ -1,0 +1,5 @@
+navigate("/error", { state: { message: "Failed to submit form" } }); // Pass optional second argument
+----------------------- 
+const location = useLocation();
+console.log(location.state) 
+// { message: 'Failed to submit form' }

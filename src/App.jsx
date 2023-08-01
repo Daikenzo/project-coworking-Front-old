@@ -7,6 +7,8 @@ import HomePage from "./page/HomePage";
 import CoworkingPage from "./page/CoworkingsPage";
 import CreateCoworkingPage from "./page/CreateCoworkingPage";
 import UpdateCoworkingPage from "./page/UpdateCoworkingPage";
+import LoginPage from "./page/Users/LoginPage"
+
 import NoPage from "./page/NoPage";
 
 // APP.JS - Brother Router List
@@ -15,12 +17,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/coworkings" element={<CoworkingPage />} />
-        <Route path="/coworkings/create" element={<CreateCoworkingPage />} />
-        <Route path="/coworkings/:id" element={<NoPage />} />
-        <Route path="/coworkings/:id/Update" element={<UpdateCoworkingPage />} />
+        <Route path="/admin/coworkings" element={<CoworkingPage />} />
+        <Route path="/admin/coworkings/create" element={<CreateCoworkingPage />} />
+        <Route path="/admin/coworkings/:id" element={<NoPage />} />
+        <Route path="/admin/coworkings/:id/Update" element={<UpdateCoworkingPage />} />
 
-        
+        <Route path="/login" element={<LoginPage />} />
+
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

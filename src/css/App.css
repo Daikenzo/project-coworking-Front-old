@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content:space-between;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -43,9 +43,31 @@
   font-size: calc(10px + 1vmin);
   color: white
 }
+.App-nav, .App-nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 1vh 2vw;
+}
+.App-nav li, .App-nav li a{
+  padding: 0px 10px;
+  text-decoration: none;
+  color:aliceblue;
+  
+}
+.App-nav a:hover{
+  color:goldenrod;
+}
 
 .App-link {
   color: #61dafb;
+}
+.Btn{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
