@@ -51,64 +51,63 @@ const CreateCoworkingPage = () =>{
       });
   
       const responseCreateJs = await responseCreate.json();
-  
+      console.log(responseCreateJs)
       //Redirect into /coWorking
       navigate("/coworkings");
     };
     // Display Form
     return (
-        <div className="App-container App-form">
-            <form onSubmit={handleCreateCoworking}>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input type="text" name="name" />
+      <div className="App-container App-form">
+          <form onSubmit={handleCreateCoworking}>
+            <div>
+              <label htmlFor="name">Name</label>
+              <input type="text" name="name" />
+            </div>
+            <div>
+              <label htmlFor="superficy">Superficy</label>
+              <input type="number" name="superficy" />
+            </div>
+            <div>
+              <label htmlFor="capacity">Capacity</label>
+              <input type="number" name="capacity" />
+            </div>
+            <div>Prix: 
+              <ul>
+                <li>
+                  <label htmlFor="price_hour">Price by hour</label>
+                  <input type="number" name="price_hour" />
+                </li>
+                <li>
+                  <label htmlFor="price_day">Price by day</label>
+                  <input type="number" name="price_day" />
+                </li>
+                <li>
+                  <label htmlFor="price_month">Price by month</label>
+                  <input type="number" name="price_month" />
+                </li>
+              </ul>
+            </div>
+            <div>Adresse :
+              <div>
+                <label htmlFor="address_number">Address number</label>
+                <input type="number" name="address_number" />
+              </div>
+              <div>
+                <label htmlFor="address_street">Address street</label>
+                <input type="text" name="address_street" />
+              </div>
+              <div>
+                <label htmlFor="address_postcode">Address zipcode</label>
+                <input type="number" name="address_postcode" />
+              </div>
+              <div>
+                <label htmlFor="address_city">Address city</label>
+                <input type="text" name="address_city" />
+              </div>
+            </div>
+            <input type="submit" />
+          </form>
       </div>
-      <div>
-        <label htmlFor="superficy">Superficy</label>
-        <input type="number" name="superficy" />
-      </div>
-
-      <div>
-        <label htmlFor="capacity">Capacity</label>
-        <input type="number" name="capacity" />
-      </div>
-      <div>Prix: 
-        <ul>
-          <li>
-            <label htmlFor="price_hour">Price by hour</label>
-            <input type="number" name="price_hour" />
-          </li>
-          <li>
-            <label htmlFor="price_day">Price by day</label>
-            <input type="number" name="price_day" />
-          </li>
-          <li>
-            <label htmlFor="price_month">Price by month</label>
-            <input type="number" name="price_month" />
-          </li>
-        </ul>
-      </div>
-      <div>Adresse :
-        <div>
-          <label htmlFor="address_number">Address number</label>
-          <input type="number" name="address_number" />
-        </div>
-        <div>
-          <label htmlFor="address_street">Address street</label>
-          <input type="text" name="address_street" />
-        </div>
-        <div>
-          <label htmlFor="address_postcode">Address zipcode</label>
-          <input type="number" name="address_postcode" />
-        </div>
-        <div>
-          <label htmlFor="address_city">Address city</label>
-          <input type="text" name="address_city" />
-        </div>
-      </div>
-      <input type="submit" />
-    </form>
-        </div>
     );
 };
 
