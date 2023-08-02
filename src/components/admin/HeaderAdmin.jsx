@@ -19,25 +19,23 @@ const   HeaderAdmin = () =>{
         navigate("/login");
     };
 
-    const jwt = Cookies.get("jwt");
-    if (jwt) {
-        getUser(jwtDecode(jwt))
-    }else{
-        navigate("/login");
-    }
-
     
     useEffect(() => {
-        const jwt = Cookies.get("jwt");
+    
+    const jwt = Cookies.get("jwt");
 
     // s'il existe pas, ça veut que l'utilisateur n'est pas connecté
     // on le redirige vers la page de login
     if (!jwt) {
       navigate("/login");
+    } else {
+
     }
 
     // on décode le jwt
-    const user = !jwt && jwtDecode(jwt);
+    if (jwt) {
+        getUser(jwtDecode(jwt))
+    }
 
     // si l'utilisateur a le rôle user
     // on le redirige vers l'accueil public

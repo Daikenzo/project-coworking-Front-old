@@ -12,18 +12,18 @@ const DashboardPage = () => {
   // Redirect if logOut
   const navigate = useNavigate();
 
-    useEffect(() => {
-      // Check jwt User Value
-      const jwt = Cookies.get("jwt");
-      if (!jwt) { navigate("/login")} // Redirect if not connected
-      // Decode jwt User Value
-      console.log(jwt)
-      const user = !jwt? (null) : jwtDecode(jwt);
-      // Check Role User & Redirect if role = user
-      if (user.data.role === 1) {
-          navigate("/");
-        }
-  }, []);
+  //   useEffect(() => {
+  //     // Check jwt User Value
+  //     const jwt = Cookies.get("jwt");
+  //     if (!jwt) { navigate("/login")} // Redirect if not connected
+  //     // Decode jwt User Value
+  //     console.log(jwt)
+  //     const user = !jwt? (null) : jwtDecode(jwt);
+  //     // Check Role User & Redirect if role = user
+  //     if (user.data.role === 1) {
+  //         navigate("/");
+  //       }
+  // }, []);
 
   return (
     <>

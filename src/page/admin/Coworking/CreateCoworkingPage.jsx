@@ -70,9 +70,7 @@ const CreateCoworkingPage = () =>{
     };
     // Use Efect 
     useEffect(() => {
-      if (!Cookies.get("jwt")) {
-        navigate("/login");
-      }
+      
     }, []);
 
     // Display Form

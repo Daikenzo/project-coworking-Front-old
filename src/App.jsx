@@ -9,6 +9,8 @@ import CoworkingPage from "./page/admin/Coworking/CoworkingsPage";
 import CreateCoworkingPage from "./page/admin/Coworking/CreateCoworkingPage";
 import UpdateCoworkingPage from "./page/admin/Coworking/UpdateCoworkingPage";
 import LoginPage from "./page/public/user/LoginPage"
+// Public
+import CoworkingsPagePublic from "./page/public/coworking/CoworkingsPagePublic";
 
 import NoPage from "./page/NoPage";
 
@@ -25,6 +27,7 @@ function App() {
         {/*Public */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/coworkings" element={<CoworkingsPagePublic />} />
          {/*Error & Other */}
         <Route path="*" element={<NoPage />} />
       </Routes>

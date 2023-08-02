@@ -4,17 +4,14 @@ import Header from "../../../components/public/Header";
 import Footer from "../../../components/public/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import '../../../css/App.css'
-import HeaderAdmin from "../../../components/admin/HeaderAdmin";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
-const CoworkingsPage = () =>{
+const CoworkingsPagePublic = () =>{
     // Initialise UseState Coworking var
     const LocalServer = 'http://localhost:3001'
     const navigate = useNavigate();
     const [coworkings, setCoworkings] = useState([]);
-    const [deleteCoworkingMessage, setDeleteCoworkingMessage] = useState([])
-    // const [updateCoworkingMessage, setUpdateCoworkingMessage] = useState([])
 
     // Fetch Coworking API
     const fetchCoworkings = async () => {
@@ -28,43 +25,19 @@ const CoworkingsPage = () =>{
         setCoworkings(result.data);
     };
 
-    // Delette Coworking
-    const handleDeleteCoworking = async (coworkingId) => {
-        const token = Cookies.get("jwt");
-        console.log(token)
-
-        const responseDelete = await fetch(`${LocalServer}/api/coworkings/${coworkingId}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        });
-    
-        const resultDelete = await responseDelete.json();
-        
-        setDeleteCoworkingMessage(resultDelete.message);
-    };
-    // Delette Coworking
-    const handleUpdateCoworking = (coworkingId) => {
-        
-
-        console.log(coworkingId);
-        console.log(`/coworkings/${coworkingId}/update`);
-    };
     // Load fetch on startup Page
     useEffect(() => {
         // Fetch Coworking List
         fetchCoworkings();
-      }, [deleteCoworkingMessage]);
+      }, []);
     
 
     // Display
     return(
         <>
-            <HeaderAdmin />
+            <Header />
             <main className="App-main">
                 <div className="App-container">
-                    {deleteCoworkingMessage && <p>{deleteCoworkingMessage}</p>}
                     {coworkings.map((coworking)=>{
                         return(
                             <div className="Coworking" 
@@ -79,16 +52,6 @@ const CoworkingsPage = () =>{
                                         {coworking.address.postcode} {coworking.address.city}
                                     </p>
                                 </div>
-                                <div className="coworking btn ">
-                                    <button className="Btn deleteBtn" onClick={() => handleDeleteCoworking(coworking.id)}>
-                                        Supprimer le coworking
-                                    </button>
-                                    <button className="Btn deleteBtn">
-                                        <Link className="Btn App-link"to={`/admin/coworkings/${coworking.id}/update`}>
-                                            Mettre à jour le coworking
-                                        </Link>
-                                    </button>
-                                </div>
                             </div>
                         )
                     })}
@@ -99,4 +62,4 @@ const CoworkingsPage = () =>{
     )
 }
 
-export default CoworkingsPage;
+export default CoworkingsPagePublic;
