@@ -1,15 +1,16 @@
 // React Dependance
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Link, Navigate } from "react-router-dom";
-import '../css/App.css'
-import HeaderAdmin from "../components/HeaderAdmin";
+import Header from "../../../components/public/Header";
+import Footer from "../../../components/public/Footer";
+import { Link, useNavigate } from "react-router-dom";
+import '../../../css/App.css'
+import HeaderAdmin from "../../../components/admin/HeaderAdmin";
 import Cookies from "js-cookie";
 
 const CoworkingsPage = () =>{
     // Initialise UseState Coworking var
     const LocalServer = 'http://localhost:3001'
+    const navigate = useNavigate();
     const [coworkings, setCoworkings] = useState([]);
     const [deleteCoworkingMessage, setDeleteCoworkingMessage] = useState([])
     // const [updateCoworkingMessage, setUpdateCoworkingMessage] = useState([])
@@ -51,8 +52,11 @@ const CoworkingsPage = () =>{
 
     // Load fetch on startup Page
     useEffect(() => {
+        if (!Cookies.get("jwt")) {
+          navigate("/login");
+        }
         fetchCoworkings();
-      }, [deleteCoworkingMessage]);
+      }, [deleteCoworkingMessage]);;
 
     // Display
     return(

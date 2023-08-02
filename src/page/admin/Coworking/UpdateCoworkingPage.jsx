@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import Header from "../components/Header";
-import HeaderAdmin from "../components/HeaderAdmin";
-import Footer from "../components/Footer";
-import NoPage from "./NoPage";
+import HeaderAdmin from "../../../components/admin/HeaderAdmin";
+import Footer from "../../../components/public/Footer";
+import NoPage from "../../NoPage";
 import Cookies from "js-cookie";
 
+
+
 const UpdateCoworkingPage = () => {
+  const serverHost = "localhost:3001"
   const { id } = useParams();
   const navigate = useNavigate();
-  const serverHost = "localhost:3001"
+
 
   const [coworking, setCoworking] = useState(null);
   const [error, getError] = useState(null);
@@ -54,7 +57,7 @@ const UpdateCoworkingPage = () => {
     // Init Token
     const token = Cookies.get("jwt");
 
-    const responseUpdate = await fetch(`http://localhost:3001/api/coworkings/${id}`, {
+    const responseUpdate = await fetch(`http://${serverHost}/api/coworkings/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -77,6 +80,10 @@ const UpdateCoworkingPage = () => {
   };
 
   useEffect(() => {
+    // Redirect if LogOut
+    if (!Cookies.get("jwt")) {
+      navigate("/login");
+    }
     fetchCoworking();
   }, []);
 

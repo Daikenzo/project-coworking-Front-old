@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import HeaderAdmin from "../components/HeaderAdmin";
-import Footer from "../components/Footer";
+import HeaderAdmin from "../../../components/admin/HeaderAdmin";
+import Footer from "../../../components/public/Footer";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
 
 const CreateCoworkingPage = () =>{
     const navigate = useNavigate();
@@ -55,17 +56,24 @@ const CreateCoworkingPage = () =>{
           Authorization: `Bearer ${token}`,
         },
       });
-  
+      // Stock & Redirect into coWorking List
       const responseCreateJs = await responseCreate.json();
-      console.log(responseCreateJs)
-      //Redirect into /coWorking
+      console.log(responseCreateJs) // Test
       navigate("/admin/coworkings");
     };
+    // Use Efect 
+    useEffect(() => {
+      if (!Cookies.get("jwt")) {
+        navigate("/login");
+      }
+    }, []);
+
     // Display Form
     return (
       <>
       <HeaderAdmin />
-      <div className="App-container App-form">
+      <main className="App-main">
+        <div className="App-container App-form">
           <form onSubmit={handleCreateCoworking}>
             <div>
               <label htmlFor="name">Name</label>
@@ -115,7 +123,8 @@ const CreateCoworkingPage = () =>{
             </div>
             <input type="submit" />
           </form>
-      </div>
+        </div>
+      </main>
       <Footer/>
       </>
     );

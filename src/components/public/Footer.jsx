@@ -2,7 +2,7 @@ import React from "react";
 //Footer Components
 
 //Import
-import '../css/App.css'
+import '../../css/App.css'
 
 const   Footer = () =>{
 
