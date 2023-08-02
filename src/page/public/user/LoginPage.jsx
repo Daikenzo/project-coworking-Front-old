@@ -28,12 +28,9 @@ const LoginPage = () => {
       const loginData = await loginResponse.json();
 
       // je récupère le jwt dans le data
+      console.log(loginData)  
       const jwt = loginData.data;
-      console.log(loginData)
-
       // je stocke le jwt dans un cookie
-      
-      console.log(jwt)
       Cookies.set("jwt", jwt);
       navigate("/admin")
     }

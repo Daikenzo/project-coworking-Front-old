@@ -25,13 +25,19 @@
 }
 .App-main{
   background-color: white;
-  min-height: 75vh;
+  min-height: 72vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
   font-size: calc(10px + 1vmin);
   color: #282c34;
+
+}
+.App-main div:first-child{
+  margin: 2vh 1vw;
+  margin-top: 0.5vh;
+  justify-self: auto;
 }
 .App-footer{
   background-color: #282c34;
@@ -42,6 +48,12 @@
   justify-content: center;
   font-size: calc(10px + 1vmin);
   color: white
+}
+/*container*/
+.App-container, .App-container > *:first-child{
+  width: max-content;
+  align-items:first baseline;
+
 }
 .App-nav, .App-nav ul{
   display: flex;
@@ -61,6 +73,17 @@
   color:goldenrod;
 }
 
+/*Components*/
+.App-login, .login{
+  width: auto;
+}
+.login-message{
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  font-size: calc(8px + 1vmin);
+  max-width: max-content;
+}
 .App-link {
   color: #61dafb;
 }

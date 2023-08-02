@@ -3,6 +3,7 @@ import HeaderAdmin from "../../../components/admin/HeaderAdmin";
 import Footer from "../../../components/public/Footer";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
+import jwtDecode from "jwt-decode";
 
 const CreateCoworkingPage = () =>{
     const navigate = useNavigate();
@@ -11,8 +12,8 @@ const CreateCoworkingPage = () =>{
     // Create Coworking actionclick
     const handleCreateCoworking = async (event) => {
       event.preventDefault();
-      // Init Token
-      const token = Cookies.get("jwt")
+
+      
       
       // on récupère les infos du form
       const name = event.target.name.value;
@@ -46,6 +47,12 @@ const CreateCoworkingPage = () =>{
       };
   
       console.log(coworkingData);
+            // Init Token
+      const token = Cookies.get("jwt")
+      
+      
+      // const user = jwtDecode(token)
+      // console.log(user)
       // Call POST API function with CoworkingData
       const responseCreate = await fetch(
         `http://${LocalHost}/api/coworkings`, {

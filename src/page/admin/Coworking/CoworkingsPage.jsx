@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import '../../../css/App.css'
 import HeaderAdmin from "../../../components/admin/HeaderAdmin";
 import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 
 const CoworkingsPage = () =>{
     // Initialise UseState Coworking var
@@ -48,15 +49,25 @@ const CoworkingsPage = () =>{
         console.log(coworkingId);
         console.log(`/coworkings/${coworkingId}/update`);
     };
-    
-
     // Load fetch on startup Page
     useEffect(() => {
-        if (!Cookies.get("jwt")) {
-          navigate("/login");
-        }
+
+        // Check jwt User Value
+        const jwt = Cookies.get("jwt");
+        if (!jwt) { navigate("/login")} // Redirect if not connected
+        // Decode jwt User Value
+        console.log(jwt)
+        const user = jwtDecode(jwt);
+        // Check Role User & Redirect if role = user
+        if (user.data.role === 1) {
+            navigate("/");
+          }
+
+
+        // Fetch Coworking List
         fetchCoworkings();
-      }, [deleteCoworkingMessage]);;
+      }, [deleteCoworkingMessage]);
+    
 
     // Display
     return(

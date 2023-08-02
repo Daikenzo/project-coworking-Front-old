@@ -4,16 +4,25 @@ import { useEffect } from "react";
 // Display Components
 import HeaderAdmin from "../../components/admin/HeaderAdmin";
 import Footer from "../../components/public/Footer";
+import "../../css/App.css"
+import jwtDecode from "jwt-decode";
 
 const DashboardPage = () => {
 
   // Redirect if logOut
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!Cookies.get("jwt")) {
-      navigate("/login");
-    }
+    useEffect(() => {
+      // Check jwt User Value
+      const jwt = Cookies.get("jwt");
+      if (!jwt) { navigate("/login")} // Redirect if not connected
+      // Decode jwt User Value
+      console.log(jwt)
+      const user = !jwt? (null) : jwtDecode(jwt);
+      // Check Role User & Redirect if role = user
+      if (user.data.role === 1) {
+          navigate("/");
+        }
   }, []);
 
   return (
