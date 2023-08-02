@@ -36,7 +36,7 @@ const   HeaderAdmin = () =>{
                     </li>
                     
                     <li>
-                        <a href="/login/disconect" onClick={handleLogout}>Déconnection</a>
+                        <a href="/login#disconect" onClick={handleLogout}>Déconnection</a>
                     </li>
                 </ul>
             </nav>
